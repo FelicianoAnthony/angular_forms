@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import {PostsService} from '../services/posts.service';
 
 @Component({
-  moduleId:module.id,
+  moduleId:module.id, // moduleId lets you use user.component.html-- lets you use relative paths
   selector: 'user',
   templateUrl: `user.component.html`,
   providers: [PostsService]
