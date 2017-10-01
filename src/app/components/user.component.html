@@ -1,15 +1,19 @@
+  <!-- everything in {{}} defined in user.component.html
+       so are class methods attached to click events.
+       inputs are linked to p tags on the top somehow?? -->
+
   <h1> {{name}} </h1>
   <p><strong>Email:</strong> {{email}}</p>
   <p><strong>Address:</strong> {{address.street}}, {{address.city}}, {{address.state}}</p>
   <button (click)="toggleHobbies()">{{showHobbies ? "Hide Hobbies" : "Show Hobbies"}}</button>
-  <div *ngIf="showHobbies">
+  <div *ngIf="showHobbies"> 
     <h3>Hobbies</h3>
     <ul>
   	  <li *ngFor="let hobby of hobbies; let i=index">
-		  {{hobby}} <button (click)="deleteHobby(i)">X</button>
+		  {{hobby}} <button (click)="deleteHobby(i)">X</button> <!-- attach a function to click event -->
   	  </li>
     </ul>
-    <form (submit) = "addHobby(hobby.value)">
+    <form (submit) = "addHobby(hobby.value)"> <!-- appends hobby to hobbies[] -->
     	<label>Add hobby: </label><br />
 		<input type="text" #hobby /><br />
 	</form>
@@ -19,7 +23,7 @@
     <h3>Edit User</h3>
 	<form>
 		<label>Name: </label><br />
-		<input type="text" name="name" [(ngModel)]="name"/><br />
+		<input type="text" name="name" [(ngModel)]="name"/><br /> <!-- something with 2-way data binding, hence ( & [ and not one or the other -->
 		<label>Email: </label><br />
 		<input type="text" name="email" [(ngModel)]="email"/><br />
 		<label>Street: </label><br />
@@ -32,7 +36,7 @@
 	</form>
 	<hr />
 	<h3>Posts</h3>
-	<div *ngFor="let post of posts">
+	<div *ngFor="let post of posts"> 
 		<h3>{{post.title}}</h3>
 		<p>{{post.body}}</p>
 	</div>
